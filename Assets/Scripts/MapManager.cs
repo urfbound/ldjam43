@@ -45,6 +45,20 @@ public class MapManager : MonoBehaviour {
 
     }
 
+    void MapSetup()
+    {
+        mapHolder = new GameObject("CurrentMap").transform;
+        itemHolder = new GameObject("CurrentItems").transform;
+        npcHolder = new GameObject("CurrentNPCs").transform;
+
+        //todo build out the map
+
+        //todo add in the items
+
+        //todo spawn the NPCs
+
+    }
+
     //my functions
     public XmlDocument getMapSaveOutput()
     {
