@@ -4,162 +4,162 @@
 <world initial-map="0">
 	<map map-id="0" map-name="player-house" map-type="house" is-enabled="true" is-outdoors="false" is-player-owned="true">
 		<row>
-			<tile type="wall"><tile/>
-			<tile type="wall"><tile/>
-			<tile type="wall"><tile/>
-			<tile type="wall"><tile/>
-			<tile type="wall"><tile/>
+			<tile type="wall"></tile>
+			<tile type="wall"></tile>
+			<tile type="wall"></tile>
+			<tile type="wall"></tile>
+			<tile type="wall"></tile>
 		</row>
 		<row>
-			<tile type="wall"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile  type="wall"><tile/>
+			<tile type="wall"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile  type="wall"></tile>
 		</row>
 		<row>
-			<tile type="wall"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile  type="wall"><tile/>
+			<tile type="wall"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile  type="wall"></tile>
 		</row>
 		<row>
-			<tile type="wall"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="wall"><tile/>
+			<tile type="wall"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="wall"></tile>
 		</row>
 		<row>
-			<tile type="wall"><tile/>
-			<tile type="wall" flavour="1"><tile/>
-			<tile type="wall" flavour="2"> <exit next-map-id="1" next-x-pos="3" next-y-pos="2" /> <tile/>
-			<tile type="wall" flavour="1"><tile/>
-			<tile type="wall"><tile/>
+			<tile type="wall"></tile>
+			<tile type="wall" flavour="1"></tile>
+			<tile type="wall" flavour="2"> <exit next-map-id="1" next-x-pos="3" next-y-pos="2" /> </tile>
+			<tile type="wall" flavour="1"></tile>
+			<tile type="wall"></tile>
 		</row>
 	</map>
 	
 	<map map-id="1" map-name="player-farm" map-type="farm" is-enabled="true" is-outdoors="true" is-player-owned="true">
 		<row>
-			<tile type="floor"><tile/>
-			<tile type="wall" flavour="10"><tile/>
-			<tile type="wall" flavour="15"><tile/>
-			<tile type="wall" flavour="15"><tile/>
-			<tile type="wall" flavour="11"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
+			<tile type="floor"></tile>
+			<tile type="wall" flavour="10"></tile>
+			<tile type="wall" flavour="15"></tile>
+			<tile type="wall" flavour="15"></tile>
+			<tile type="wall" flavour="11"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
 		</row>
 		<row>
-			<tile type="floor"><tile/>
-			<tile type="wall" flavour="16"><tile/>
-			<tile type="wall" flavour="8"><tile/>
-			<tile type="wall" flavour="9"> <exit next-map-id="0" next-x-pos="2" next-y-pos="3" /> <tile/>
-			<tile type="wall" flavour="16"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
+			<tile type="floor"></tile>
+			<tile type="wall" flavour="16"></tile>
+			<tile type="wall" flavour="8"></tile>
+			<tile type="wall" flavour="9"> <exit next-map-id="0" next-x-pos="2" next-y-pos="3" /> </tile>
+			<tile type="wall" flavour="16"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
 		</row>
 		<row>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
 		</row>
 		<row>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
 		</row>
 		<row>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
 		</row>
 		<row>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
 		</row>
 		<row>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
 		</row>
 		<row>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
 		</row>
 		<row>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
 		</row>
 		<row>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
-			<tile type="floor"><tile/>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
 		</row>
 	</map>
 	
