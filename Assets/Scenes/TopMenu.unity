@@ -113,59 +113,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1439652987
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4346098474037778, guid: c91f64d8839a8ae47b4906b89d08bcea, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346098474037778, guid: c91f64d8839a8ae47b4906b89d08bcea, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346098474037778, guid: c91f64d8839a8ae47b4906b89d08bcea, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346098474037778, guid: c91f64d8839a8ae47b4906b89d08bcea, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346098474037778, guid: c91f64d8839a8ae47b4906b89d08bcea, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346098474037778, guid: c91f64d8839a8ae47b4906b89d08bcea, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346098474037778, guid: c91f64d8839a8ae47b4906b89d08bcea, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346098474037778, guid: c91f64d8839a8ae47b4906b89d08bcea, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c91f64d8839a8ae47b4906b89d08bcea, type: 2}
-  m_IsPrefabParent: 0
---- !u!1 &1580382105
+--- !u!1 &2089664837
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1580382109}
-  - component: {fileID: 1580382108}
-  - component: {fileID: 1580382107}
-  - component: {fileID: 1580382106}
+  - component: {fileID: 2089664841}
+  - component: {fileID: 2089664840}
+  - component: {fileID: 2089664839}
+  - component: {fileID: 2089664838}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -173,26 +131,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1580382106
+--- !u!81 &2089664838
 AudioListener:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1580382105}
+  m_GameObject: {fileID: 2089664837}
   m_Enabled: 1
---- !u!124 &1580382107
+--- !u!124 &2089664839
 Behaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1580382105}
+  m_GameObject: {fileID: 2089664837}
   m_Enabled: 1
---- !u!20 &1580382108
+--- !u!20 &2089664840
 Camera:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1580382105}
+  m_GameObject: {fileID: 2089664837}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
@@ -207,7 +165,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4000
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -223,16 +181,16 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!4 &1580382109
+--- !u!4 &2089664841
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1580382105}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 2089664837}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
