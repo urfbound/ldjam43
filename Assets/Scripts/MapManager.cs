@@ -85,7 +85,7 @@ public class MapManager : MonoBehaviour {
         for(int i=0; i<currentMapYDim; i++)
         {
             GameObject toInstantiate;
-            Tile myTile = new Tile(); MapManager.tileTypes myTileType; int myTileFlavour, xLoc, yLoc;
+            Tile myTile = new Tile(); MapManager.tileTypes myTileType; int myTileFlavour, xLoc, yLoc, myExitId, myExitX, myExitY;
             for (int j=0; j<currentMapXDim; j++)
             {
                 //get information about this tile
@@ -138,6 +138,9 @@ public class MapManager : MonoBehaviour {
                         }
                         break;
                     case MapManager.tileTypes.EXIT:
+                        myExitId = myTile.getMyExitNextMapId();
+                        myExitX = myTile.getMyExitNextX();
+                        myExitY = myTile.getMyExitNextY();
                         if (isOutdoor)
                         {
                             myTileFlavour = (myTileFlavour < 0) ? 0 : myTileFlavour;
@@ -145,6 +148,8 @@ public class MapManager : MonoBehaviour {
                             toInstantiate = exteriorExitTiles[myTileFlavour];
                             GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
                             nextInstancedTile.transform.SetParent(mapHolder);
+                            Exit myExit = nextInstancedTile.GetComponent<Exit>();
+                            myExit.setParams(myExitId, myExitX, myExitY);
                         }
                         else
                         {
@@ -153,6 +158,8 @@ public class MapManager : MonoBehaviour {
                             toInstantiate = interiorExitTiles[myTileFlavour];
                             GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
                             nextInstancedTile.transform.SetParent(mapHolder);
+                            Exit myExit = nextInstancedTile.GetComponent<Exit>();
+                            myExit.setParams(myExitId, myExitX, myExitY);
                         }
                         //set exit details
                         //add an exit-collider to the exit for the player to hit
@@ -508,14 +515,10 @@ public class MapManager : MonoBehaviour {
             myFlavour = flavourIn;
         }
 
-        public MapManager.tileTypes getTileType()
-        {
-            return myTileType;
-        }
-
-        public int getMyFlavour()
-        {
-            return myFlavour;
-        }
+        public MapManager.tileTypes getTileType() { return myTileType; }
+        public int getMyFlavour() { return myFlavour; }
+        public int getMyExitNextMapId() { return exitId; }
+        public int getMyExitNextX() { return exitTgtX; }
+        public int getMyExitNextY() { return exitTgtY; }
     }
 }

@@ -9,33 +9,61 @@
 			<tile type="wall"></tile>
 			<tile type="wall"></tile>
 			<tile type="wall"></tile>
+			<tile type="wall"></tile>
+			<tile type="wall"></tile>
 		</row>
 		<row>
 			<tile type="wall"></tile>
 			<tile type="floor"></tile>
 			<tile type="floor"></tile>
 			<tile type="floor"></tile>
-			<tile  type="wall"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="wall"></tile>
 		</row>
 		<row>
 			<tile type="wall"></tile>
 			<tile type="floor"></tile>
 			<tile type="floor"></tile>
 			<tile type="floor"></tile>
-			<tile  type="wall"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="wall"></tile>
 		</row>
 		<row>
 			<tile type="wall"></tile>
 			<tile type="floor"></tile>
 			<tile type="floor"></tile>
 			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
 			<tile type="wall"></tile>
 		</row>
 		<row>
+			<tile type="wall"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="wall"></tile>
+		</row>
+		<row>
+			<tile type="wall"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="floor"></tile>
+			<tile type="wall"></tile>
+		</row>
+		<row>
+			<tile type="wall"></tile>
 			<tile type="wall"></tile>
 			<tile type="wall" flavour="1"></tile>
 			<tile type="exit" flavour="2"> <exit next-map-id="1" next-x-pos="3" next-y-pos="2" /> </tile>
 			<tile type="wall" flavour="1"></tile>
+			<tile type="wall"></tile>
 			<tile type="wall"></tile>
 		</row>
 	</map>
