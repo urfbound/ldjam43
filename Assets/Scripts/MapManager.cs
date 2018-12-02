@@ -37,6 +37,7 @@ public class MapManager : MonoBehaviour {
     private List<GameObject> currentMapItems;
     //map pc/npc elements
     private GameObject myPlayer; private PlayerController myPlayerScript; private GameObject myMainCamera; private CameraController myMainCameraController;
+    private GameObject myUI; private UIController myUiController;
     private List<GameObject> currentMapNpcs;
 
     //holders are used to keep the game hierarchy cleaner while editing in Unity (they're collapsible!)
@@ -56,6 +57,8 @@ public class MapManager : MonoBehaviour {
         myMainCamera = Instantiate(mainCameraPrefab, new Vector3(0f, 0f, -10f), Quaternion.identity);
         myMainCameraController = myMainCamera.GetComponent<CameraController>();
         myMainCameraController.cameraSetup(myPlayer);
+        //set up the UI
+        myUI = GameObject.Find("Canvas"); myUiController = myUI.GetComponent<UIController>();
         myPlayer.SetActive(false);
 
         //figure out if working from a save file
