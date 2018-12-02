@@ -31,4 +31,12 @@ public class UIController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void setUITime(int dayIn, int hourIn, int minuteIn)
+    {
+        int myMonth = 1; int myWeek = 1;
+        while(dayIn > 28) { myMonth += 1; dayIn -= 28; }
+        while(dayIn > 7) { myWeek += 1; dayIn -= 7; }
+        InGameUIDate.text = "Month " + myMonth + " Week " + myWeek + " Day " + dayIn + " " + hourIn + ":" + ((minuteIn==0)? "00" : minuteIn.ToString());
+    }
 }

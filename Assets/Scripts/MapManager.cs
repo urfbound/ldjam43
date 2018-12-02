@@ -256,6 +256,16 @@ public class MapManager : MonoBehaviour {
         return mapSaveOutput;
     }
 
+    public int getDateFromSave()//TODO complete
+    {
+        return 1;
+    }
+
+    public int getMoneyFromSave()//TODO complete
+    {
+        return 0;
+    }
+
     private int initalMapConfigRead(bool loadSaveFile, int saveFileIndx) //TODO tidy comments returns the ID of the first map to load at game-start
     {
         //XmlTextReader myRdr = new XmlTextReader("./Configs/map_configs.xml");
