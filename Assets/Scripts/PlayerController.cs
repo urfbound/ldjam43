@@ -31,4 +31,9 @@ public class PlayerController : MonoBehaviour {
             transform.position = playerPos;
         }
 	}
+
+    public void setCanMove(bool canMoveIn)
+    {
+        canMove = canMoveIn;
+    }
 }

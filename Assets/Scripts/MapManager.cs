@@ -7,6 +7,8 @@ public class MapManager : MonoBehaviour {
     //public elements
     public bool testMode = false;
 
+    public GameObject playerPrefab, mainCameraPrefab;
+
     public GameObject[] interiorFloorTiles;
     public GameObject[] interiorWallTiles;
     public GameObject[] interiorExitTiles;
@@ -15,9 +17,9 @@ public class MapManager : MonoBehaviour {
     public GameObject[] exteriorWallTiles;
     public GameObject[] exteriorExitTiles;
 
-    public int tileSideLength;
+    public int tileSideLength, playerTileOffset;
 
-    public enum tileTypes { FLOOR, WALL, EXIT, INVALID };
+    public enum tileTypes { FLOOR, WALL, WATER, PLANTER, EXIT, INVALID };
     public enum mapTypes { HOUSE, FARM, RANCH, INVALID };
 
     //private elements
@@ -27,12 +29,14 @@ public class MapManager : MonoBehaviour {
     private int homeMapId;
     //map tile elements
     private int currentMapId = 0;
+    private int currentMapStartX, currentMapStartY;
     private int currentMapXDim = 5;
     private int currentMapYDim = 5;
     private List<List<GameObject>> currentMapObjs;
     private List<GameObject> currentMapExits;
     private List<GameObject> currentMapItems;
-    //map npc elements
+    //map pc/npc elements
+    private GameObject myPlayer; private PlayerController myPlayerScript; private GameObject myMainCamera; private CameraController myMainCameraController;
     private List<GameObject> currentMapNpcs;
 
     //holders are used to keep the game hierarchy cleaner while editing in Unity (they're collapsible!)
@@ -44,6 +48,16 @@ public class MapManager : MonoBehaviour {
     void Awake()
     {
         myWorld = new World();
+        //set up the player
+        myPlayer = Instantiate(playerPrefab, new Vector3(-200f, 200f, 0f), Quaternion.identity);
+        myPlayerScript = myPlayer.GetComponent<PlayerController>();
+        myPlayerScript.setCanMove(false);
+        //set up the camera
+        myMainCamera = Instantiate(mainCameraPrefab, new Vector3(0f, 0f, -10f), Quaternion.identity);
+        myMainCameraController = myMainCamera.GetComponent<CameraController>();
+        myMainCameraController.cameraSetup(myPlayer);
+        myPlayer.SetActive(false);
+
         //figure out if working from a save file
 
         homeMapId = initalMapConfigRead(false, 0);//TODO add support for save files
@@ -57,6 +71,8 @@ public class MapManager : MonoBehaviour {
         currentMapId = homeMapId;
         currentMap = myWorld.getMap(currentMapId);
         MapSetup();
+        myPlayer.SetActive(true);
+        myPlayerScript.setCanMove(true);
     }
 
     // Use this for initialization
@@ -188,9 +204,13 @@ public class MapManager : MonoBehaviour {
                 }
             }
         }
-        //todo add in the items
-
+        //todo add the player
+        int myNextXPos = (currentMapStartX*tileSideLength)+playerTileOffset;
+        int myNextYPos = 0-playerTileOffset-(currentMapStartY*tileSideLength);
+        myPlayer.transform.position = new Vector3(myNextXPos, myNextYPos, 0f);
         //todo spawn the NPCs
+
+        //todo add in the items
 
         //todo set map rules
         /*
@@ -253,6 +273,8 @@ public class MapManager : MonoBehaviour {
         if (!topWorld.HasChildNodes) { Debug.Log("no world tag or it was empty");  return -1; }
         int homeNode;
         if (Int32.TryParse(topWorld.Attributes["initial-map"].Value, out homeNode) == false) { homeNode = -1; }//check homeNode is legit
+        if (Int32.TryParse(topWorld.Attributes["initial-x-pos"].Value, out currentMapStartX) == false) { currentMapStartX = 1; }
+        if (Int32.TryParse(topWorld.Attributes["initial-y-pos"].Value, out currentMapStartY) == false) { currentMapStartY = 1; }
         XmlNodeList mapIn = topWorld.SelectNodes("map");
         if (mapIn.Count < 1) { Debug.Log("no map tags in world tag"); return -1; }//todo tidy debug messages //todo decide on a more useful minimum map count (e.g. 3)
         /***************************************************************
