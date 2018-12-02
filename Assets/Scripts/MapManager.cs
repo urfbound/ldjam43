@@ -40,9 +40,9 @@ public class MapManager : MonoBehaviour {
     private List<GameObject> currentMapNpcs;
 
     //holders are used to keep the game hierarchy cleaner while editing in Unity (they're collapsible!)
-    private Transform mapHolder;
-    private Transform itemHolder;
-    private Transform npcHolder;
+    private GameObject mapHolder;
+    private GameObject itemHolder;
+    private GameObject npcHolder;
 
     //Unity functions
     void Awake()
@@ -89,9 +89,9 @@ public class MapManager : MonoBehaviour {
 
     private void MapSetup()
     {
-        mapHolder = new GameObject("CurrentMap").transform;
-        itemHolder = new GameObject("CurrentItems").transform;
-        npcHolder = new GameObject("CurrentNPCs").transform;
+        mapHolder = new GameObject("CurrentMap");
+        itemHolder = new GameObject("CurrentItems");
+        npcHolder = new GameObject("CurrentNPCs");
         //gather necessary info
         bool isOutdoor = currentMap.getIsOutdoor();
 
@@ -124,7 +124,7 @@ public class MapManager : MonoBehaviour {
                             toInstantiate = exteriorFloorTiles[myTileFlavour];
                             GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
                             //add the prefab to our lists
-                            nextInstancedTile.transform.SetParent(mapHolder);
+                            nextInstancedTile.transform.SetParent(mapHolder.transform);
                         }
                         else
                         {
@@ -132,7 +132,7 @@ public class MapManager : MonoBehaviour {
                             myTileFlavour = (myTileFlavour >= interiorFloorTiles.Length) ? interiorFloorTiles.Length - 1 : myTileFlavour;
                             toInstantiate = interiorFloorTiles[myTileFlavour];
                             GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
-                            nextInstancedTile.transform.SetParent(mapHolder);
+                            nextInstancedTile.transform.SetParent(mapHolder.transform);
                         }
                         break;
                     case MapManager.tileTypes.WALL:
@@ -142,7 +142,7 @@ public class MapManager : MonoBehaviour {
                             myTileFlavour = (myTileFlavour >= exteriorWallTiles.Length) ? exteriorWallTiles.Length - 1 : myTileFlavour;
                             toInstantiate = exteriorWallTiles[myTileFlavour];
                             GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
-                            nextInstancedTile.transform.SetParent(mapHolder);
+                            nextInstancedTile.transform.SetParent(mapHolder.transform);
                         }
                         else
                         {
@@ -150,7 +150,7 @@ public class MapManager : MonoBehaviour {
                             myTileFlavour = (myTileFlavour >= interiorWallTiles.Length) ? interiorWallTiles.Length - 1 : myTileFlavour;
                             toInstantiate = interiorWallTiles[myTileFlavour];
                             GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
-                            nextInstancedTile.transform.SetParent(mapHolder);
+                            nextInstancedTile.transform.SetParent(mapHolder.transform);
                         }
                         break;
                     case MapManager.tileTypes.EXIT:
@@ -163,7 +163,7 @@ public class MapManager : MonoBehaviour {
                             myTileFlavour = (myTileFlavour >= exteriorExitTiles.Length) ? exteriorExitTiles.Length - 1 : myTileFlavour;
                             toInstantiate = exteriorExitTiles[myTileFlavour];
                             GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
-                            nextInstancedTile.transform.SetParent(mapHolder);
+                            nextInstancedTile.transform.SetParent(mapHolder.transform);
                             Exit myExit = nextInstancedTile.GetComponent<Exit>();
                             myExit.setParams(myExitId, myExitX, myExitY);
                         }
@@ -173,7 +173,7 @@ public class MapManager : MonoBehaviour {
                             myTileFlavour = (myTileFlavour >= interiorExitTiles.Length) ? interiorExitTiles.Length - 1 : myTileFlavour;
                             toInstantiate = interiorExitTiles[myTileFlavour];
                             GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
-                            nextInstancedTile.transform.SetParent(mapHolder);
+                            nextInstancedTile.transform.SetParent(mapHolder.transform);
                             Exit myExit = nextInstancedTile.GetComponent<Exit>();
                             myExit.setParams(myExitId, myExitX, myExitY);
                         }
@@ -190,7 +190,7 @@ public class MapManager : MonoBehaviour {
                             myTileFlavour = (myTileFlavour >= exteriorWallTiles.Length) ? exteriorWallTiles.Length - 1 : myTileFlavour;
                             toInstantiate = exteriorWallTiles[myTileFlavour];
                             GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
-                            nextInstancedTile.transform.SetParent(mapHolder);
+                            nextInstancedTile.transform.SetParent(mapHolder.transform);
                         }
                         else
                         {
@@ -198,7 +198,7 @@ public class MapManager : MonoBehaviour {
                             myTileFlavour = (myTileFlavour >= interiorWallTiles.Length) ? interiorWallTiles.Length - 1 : myTileFlavour;
                             toInstantiate = interiorWallTiles[myTileFlavour];
                             GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
-                            nextInstancedTile.transform.SetParent(mapHolder);
+                            nextInstancedTile.transform.SetParent(mapHolder.transform);
                         }
                         break;
                 }
@@ -233,21 +233,18 @@ public class MapManager : MonoBehaviour {
         */
     }
 
-    private void DrawMap()
-    {
-
-    }
-
-    void ChangeMaps(int outgoingMapId, int incomingMapId) //todo
+    public void ChangeMaps(int incomingMapId) //todo
     {
         //TODO save all the parts of the outgoing map that we have to
 
         //TODO unload the current map
-
-        //TODO load the new map
-
-        //TODO draw the new map
-        MapSetup();
+        Destroy(mapHolder);
+        Destroy(itemHolder);
+        Destroy(npcHolder);
+        //load the new map
+        currentMapId = incomingMapId;
+        currentMap = myWorld.getMap(currentMapId);
+        MapSetup(); //draw the new map
     }
 
     //my functions
@@ -502,7 +499,7 @@ public class MapManager : MonoBehaviour {
             }
             else return new Tile();
         }
-
+        
         public int getXSize() { return xDim; }
         public int getYSize() { return yDim; }
         public bool getIsEnabled() { return myEnabled; }

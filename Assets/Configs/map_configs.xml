@@ -85,7 +85,7 @@
 			<tile type="floor"></tile>
 			<tile type="wall" flavour="16"></tile>
 			<tile type="wall" flavour="8"></tile>
-			<tile type="exit" flavour="9"> <exit next-map-id="0" next-x-pos="2" next-y-pos="3" /> </tile>
+			<tile type="exit" flavour="9"> <exit next-map-id="0" next-x-pos="3" next-y-pos="2" /> </tile>
 			<tile type="wall" flavour="16"></tile>
 			<tile type="floor"></tile>
 			<tile type="floor"></tile>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Exit : MonoBehaviour {
-    public MapManager mapCtrlr;
+    private MapManager mapCtrlr;
 
     private int nextMapId;
     private int nextMapStartX, nextMapStartY;
@@ -12,7 +12,9 @@ public class Exit : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         targetsSet = false;
-	}
+        mapCtrlr = GameObject.Find("MapManager").GetComponent<MapManager>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,6 +27,7 @@ public class Exit : MonoBehaviour {
         {
             //load the other map
             Debug.Log("Request to move to mapId " + nextMapId + " at coordinates (" + nextMapStartX + ", " + nextMapStartY + ")" );
+            mapCtrlr.ChangeMaps(nextMapId);
         }
     }
 
