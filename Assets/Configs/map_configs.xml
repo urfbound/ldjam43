@@ -182,4 +182,8 @@
 	<map map-id="6" map-name="town-house-carol" map-type="ranch" is-enabled="false" is-outdoors="false" is-player-owned="false">
 	
 	</map>
+	<npc>
+	</npc>
+	<item>
+	</item>
 </world>

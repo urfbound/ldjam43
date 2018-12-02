@@ -1557,10 +1557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad8e9fe924976548bb9a14241b892a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intFloorFlavours: []
-  intWallFlavours: []
-  extFloorFlavours: []
-  extWallFlavours: []
+  testMode: 1
 --- !u!4 &1829146392
 Transform:
   m_ObjectHideFlags: 0
