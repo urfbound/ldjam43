@@ -508,8 +508,8 @@ public class MapManager : MonoBehaviour {
             if(myTileType == MapManager.tileTypes.EXIT)
             {//most of this error handling needs to be done at the MapManager level
                 exitId = (exitIdIn<0)? 0 : exitIdIn;
-                exitTgtX = (exitTgtXIn<0 ) ? 0 : exitIdIn;
-                exitTgtY = (exitTgtYIn<0) ? 0 : exitIdIn;
+                exitTgtX = (exitTgtXIn<0 ) ? 0 : exitTgtXIn;
+                exitTgtY = (exitTgtYIn<0) ? 0 : exitTgtYIn;
             }
             else { exitId = 0; exitTgtX = 0; exitTgtY = 0; }
             myFlavour = flavourIn;

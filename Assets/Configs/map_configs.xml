@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- TODO add guide for use of this file-->
 
-<world initial-map="1">
+<world initial-map="0">
 	<map map-id="0" map-name="player-house" map-type="house" is-enabled="true" is-outdoors="false" is-player-owned="true">
 		<row>
 			<tile type="wall"></tile>
