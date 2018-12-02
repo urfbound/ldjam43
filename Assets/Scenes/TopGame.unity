@@ -141,6 +141,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testMode: 0
+  interiorFloorTiles:
+  - {fileID: 1860858037731266, guid: b832253e6a4bf0f4dbc98c9d1f05bd83, type: 2}
+  interiorWallTiles:
+  - {fileID: 1451299967494470, guid: 9618ab7ad64699a48a73d2c61168a488, type: 2}
+  interiorExitTiles:
+  - {fileID: 1988547575595272, guid: 733812c84160f874992f72d706bb8c3a, type: 2}
+  exteriorFloorTiles:
+  - {fileID: 1865483025643720, guid: b857c8775f6a9e6458d9bd360990bd28, type: 2}
+  - {fileID: 1133144560583774, guid: 84ac4044800cba849b055794767e43b5, type: 2}
+  - {fileID: 1471271157331118, guid: efc5d26cab1664c48b0967d67c54eb53, type: 2}
+  - {fileID: 1438140832989436, guid: eacaee2dde9314b499149728e0a41de8, type: 2}
+  exteriorWallTiles:
+  - {fileID: 1733848914270804, guid: 5dc95f6f75c8cbc43ba51a2707571ba1, type: 2}
+  exteriorExitTiles:
+  - {fileID: 1251726336876408, guid: 41020f1d81f331c4e9492eb5761b9e7c, type: 2}
+  tileSideLength: 32
 --- !u!4 &379929715
 Transform:
   m_ObjectHideFlags: 0

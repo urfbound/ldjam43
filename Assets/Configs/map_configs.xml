@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- TODO add guide for use of this file-->
 
-<world initial-map="0">
+<world initial-map="1">
 	<map map-id="0" map-name="player-house" map-type="house" is-enabled="true" is-outdoors="false" is-player-owned="true">
 		<row>
 			<tile type="wall"></tile>
@@ -34,7 +34,7 @@
 		<row>
 			<tile type="wall"></tile>
 			<tile type="wall" flavour="1"></tile>
-			<tile type="wall" flavour="2"> <exit next-map-id="1" next-x-pos="3" next-y-pos="2" /> </tile>
+			<tile type="exit" flavour="2"> <exit next-map-id="1" next-x-pos="3" next-y-pos="2" /> </tile>
 			<tile type="wall" flavour="1"></tile>
 			<tile type="wall"></tile>
 		</row>
@@ -57,7 +57,7 @@
 			<tile type="floor"></tile>
 			<tile type="wall" flavour="16"></tile>
 			<tile type="wall" flavour="8"></tile>
-			<tile type="wall" flavour="9"> <exit next-map-id="0" next-x-pos="2" next-y-pos="3" /> </tile>
+			<tile type="exit" flavour="9"> <exit next-map-id="0" next-x-pos="2" next-y-pos="3" /> </tile>
 			<tile type="wall" flavour="16"></tile>
 			<tile type="floor"></tile>
 			<tile type="floor"></tile>

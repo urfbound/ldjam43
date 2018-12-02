@@ -7,19 +7,29 @@ public class MapManager : MonoBehaviour {
     //public elements
     public bool testMode = false;
 
+    public GameObject[] interiorFloorTiles;
+    public GameObject[] interiorWallTiles;
+    public GameObject[] interiorExitTiles;
+
+    public GameObject[] exteriorFloorTiles;
+    public GameObject[] exteriorWallTiles;
+    public GameObject[] exteriorExitTiles;
+
+    public int tileSideLength;
+
     public enum tileTypes { FLOOR, WALL, EXIT, INVALID };
     public enum mapTypes { HOUSE, FARM, RANCH, INVALID };
 
     //private elements
     //game-state elements
-    private World myWorld;
+    private World myWorld; private Map currentMap;
     private XmlDocument mapSaveOutput;
     private int homeMapId;
     //map tile elements
     private int currentMapId = 0;
     private int currentMapXDim = 5;
     private int currentMapYDim = 5;
-    private List<List<GameObject>> currentMap;
+    private List<List<GameObject>> currentMapObjs;
     private List<GameObject> currentMapExits;
     private List<GameObject> currentMapItems;
     //map npc elements
@@ -40,8 +50,12 @@ public class MapManager : MonoBehaviour {
         if (homeMapId == -1)
         {
             //TODO report error
+            Debug.Log("Fatal map parse error initializing MapManager");
             //TODO create fallback map
+            homeMapId = 0;
         }
+        currentMapId = homeMapId;
+        currentMap = myWorld.getMap(currentMapId);
         MapSetup();
     }
 
@@ -57,17 +71,143 @@ public class MapManager : MonoBehaviour {
 
     }
 
-    void MapSetup()
+    private void MapSetup()
     {
         mapHolder = new GameObject("CurrentMap").transform;
         itemHolder = new GameObject("CurrentItems").transform;
         npcHolder = new GameObject("CurrentNPCs").transform;
+        //gather necessary info
+        bool isOutdoor = currentMap.getIsOutdoor();
 
         //todo build out the map
+        currentMapXDim = currentMap.getXSize();
+        currentMapYDim = currentMap.getYSize();
+        for(int i=0; i<currentMapYDim; i++)
+        {
+            GameObject toInstantiate;
+            Tile myTile = new Tile(); MapManager.tileTypes myTileType; int myTileFlavour, xLoc, yLoc;
+            for (int j=0; j<currentMapXDim; j++)
+            {
+                //get information about this tile
+                myTile = currentMap.getTile(i,j);
+                myTileType = myTile.getTileType();
+                myTileFlavour = myTile.getMyFlavour();
+                //choose the location
+                xLoc = j*tileSideLength;
+                yLoc = 0-i*tileSideLength;
+                //choose the prefab
+                switch (myTileType)
+                {
+                    case MapManager.tileTypes.FLOOR:
+                        if (isOutdoor)
+                        {
+                            //decode which prefab to use
+                            myTileFlavour = (myTileFlavour<0) ? 0 : myTileFlavour;
+                            myTileFlavour = (myTileFlavour >= exteriorFloorTiles.Length) ? exteriorFloorTiles.Length - 1: myTileFlavour;
+                            //instantiate the prefab
+                            toInstantiate = exteriorFloorTiles[myTileFlavour];
+                            GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
+                            //add the prefab to our lists
+                            nextInstancedTile.transform.SetParent(mapHolder);
+                        }
+                        else
+                        {
+                            myTileFlavour = (myTileFlavour < 0) ? 0 : myTileFlavour;
+                            myTileFlavour = (myTileFlavour >= interiorFloorTiles.Length) ? interiorFloorTiles.Length - 1 : myTileFlavour;
+                            toInstantiate = interiorFloorTiles[myTileFlavour];
+                            GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
+                            nextInstancedTile.transform.SetParent(mapHolder);
+                        }
+                        break;
+                    case MapManager.tileTypes.WALL:
+                        if (isOutdoor)
+                        {
+                            myTileFlavour = (myTileFlavour < 0) ? 0 : myTileFlavour;
+                            myTileFlavour = (myTileFlavour >= exteriorWallTiles.Length) ? exteriorWallTiles.Length - 1 : myTileFlavour;
+                            toInstantiate = exteriorWallTiles[myTileFlavour];
+                            GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
+                            nextInstancedTile.transform.SetParent(mapHolder);
+                        }
+                        else
+                        {
+                            myTileFlavour = (myTileFlavour < 0) ? 0 : myTileFlavour;
+                            myTileFlavour = (myTileFlavour >= interiorWallTiles.Length) ? interiorWallTiles.Length - 1 : myTileFlavour;
+                            toInstantiate = interiorWallTiles[myTileFlavour];
+                            GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
+                            nextInstancedTile.transform.SetParent(mapHolder);
+                        }
+                        break;
+                    case MapManager.tileTypes.EXIT:
+                        if (isOutdoor)
+                        {
+                            myTileFlavour = (myTileFlavour < 0) ? 0 : myTileFlavour;
+                            myTileFlavour = (myTileFlavour >= exteriorExitTiles.Length) ? exteriorExitTiles.Length - 1 : myTileFlavour;
+                            toInstantiate = exteriorExitTiles[myTileFlavour];
+                            GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
+                            nextInstancedTile.transform.SetParent(mapHolder);
+                        }
+                        else
+                        {
+                            myTileFlavour = (myTileFlavour < 0) ? 0 : myTileFlavour;
+                            myTileFlavour = (myTileFlavour >= interiorExitTiles.Length) ? interiorExitTiles.Length - 1 : myTileFlavour;
+                            toInstantiate = interiorExitTiles[myTileFlavour];
+                            GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
+                            nextInstancedTile.transform.SetParent(mapHolder);
+                        }
+                        //set exit details
+                        //add an exit-collider to the exit for the player to hit
 
+                        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!TODO URGENTLY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                        break;
+                    case MapManager.tileTypes.INVALID:
+                    default://for now we treat INVALID or other unknown types as a wall. consider changing later
+                        if (isOutdoor)
+                        {
+                            myTileFlavour = (myTileFlavour < 0) ? 0 : myTileFlavour;
+                            myTileFlavour = (myTileFlavour >= exteriorWallTiles.Length) ? exteriorWallTiles.Length - 1 : myTileFlavour;
+                            toInstantiate = exteriorWallTiles[myTileFlavour];
+                            GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
+                            nextInstancedTile.transform.SetParent(mapHolder);
+                        }
+                        else
+                        {
+                            myTileFlavour = (myTileFlavour < 0) ? 0 : myTileFlavour;
+                            myTileFlavour = (myTileFlavour >= interiorWallTiles.Length) ? interiorWallTiles.Length - 1 : myTileFlavour;
+                            toInstantiate = interiorWallTiles[myTileFlavour];
+                            GameObject nextInstancedTile = Instantiate(toInstantiate, new Vector3(xLoc, yLoc, 0f), Quaternion.identity) as GameObject;
+                            nextInstancedTile.transform.SetParent(mapHolder);
+                        }
+                        break;
+                }
+            }
+        }
         //todo add in the items
 
         //todo spawn the NPCs
+
+        //todo set map rules
+        /*
+        MapManager.mapTypes myMapType;
+        myMapType = currentMap.getMyMapType();
+        switch(myMapType)
+            case MapManager.mapTypes.HOUSE:
+
+                break;
+            case MapManager.mapTypes.FARM:
+
+                break;
+            case MapManager.mapTypes.RANCH:
+
+                break;
+            case MapManager.mapTypes.INVALID:
+
+                break;
+            }
+        */
+    }
+
+    private void DrawMap()
+    {
 
     }
 
@@ -139,6 +279,12 @@ public class MapManager : MonoBehaviour {
         {
             myMaps = new Map[MAX_MAPS];
             for(int i=0; i< MAX_MAPS; i++) { myMaps[i] = null; }
+        }
+
+        public Map getMap(int requestedIndx)
+        {
+            if (requestedIndx<0 || requestedIndx>myMaps.Length) { return null; }
+            else { return myMaps[requestedIndx]; }
         }
 
         public bool addMap(XmlNode mapIn)
@@ -321,12 +467,19 @@ public class MapManager : MonoBehaviour {
 
         public Tile getTile(int xAddrIn, int yAddrIn)
         {
-            if ((xAddrIn < myMap[0].Count && xAddrIn > 0) && (yAddrIn < myMap[1].Count && yAddrIn > 0))
+            if ((xAddrIn < myMap[0].Count && xAddrIn >= 0) && (yAddrIn < myMap[1].Count && yAddrIn >= 0))
             {
                 return myMap[xAddrIn][yAddrIn];
             }
             else return new Tile();
         }
+
+        public int getXSize() { return xDim; }
+        public int getYSize() { return yDim; }
+        public bool getIsEnabled() { return myEnabled; }
+        public bool getIsOutdoor() { return myOutdoor; }
+        public bool getIsPlayerOwned() { return myOwned; }
+        public MapManager.mapTypes getMyMapType() { return myType; }
     }
 
     private class Tile
